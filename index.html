@@ -31,13 +31,13 @@
   /* ANALOG CLOCK */
   .analog-clock {
     position: absolute;
-    width: 24px;
-    height: 24px;
+    width: 25px;                 /* 1px bigger */
+    height: 25px;
     border: 2px solid rgba(255,255,255,0.85);
     border-radius: 50%;
-    top: 178px;                 /* moved DOWN */
+    top: 178px;                  /* same vertical position */
     left: 50%;
-    transform: translateX(-52%); /* moved LEFT */
+    transform: translateX(-54%); /* moved slightly LEFT */
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(4px);
   }
@@ -60,11 +60,11 @@
   /* DIGITAL CLOCK */
   #digital-clock {
     position: absolute;
-    top: 248px;                 /* moved DOWN */
+    top: 252px;                 /* moved DOWN a bit */
     left: 50%;
-    transform: translateX(-52%); /* moved LEFT */
+    transform: translateX(-52%);
     font-family: "Times New Roman", serif;
-    font-size: 12px;            /* smaller */
+    font-size: 12px;
     color: #ffb6c9;             /* soft pink */
     text-shadow: 0 0 6px rgba(255, 182, 201, 0.7);
   }

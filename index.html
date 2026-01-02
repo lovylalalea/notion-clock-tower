@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Clock Tower</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: url('YOUR-IMAGE-LINK-HERE') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #clock {
+    font-family: serif;
+    font-size: 32px;
+    color: white;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+  }
+</style>
+</head>
+
+<body>
+  <div id="clock"></div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      document.getElementById("clock").innerHTML = hours + ":" + minutes;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>

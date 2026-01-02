@@ -5,47 +5,48 @@
 <title>Clock Tower</title>
 
 <style>
-  /* LOCK THE WHOLE WIDGET */
-  .widget-wrapper {
-    width: 420px;        /* fixed width */
+  /* HARD LOCK: Prevent Notion from scaling the widget */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 420px;          /* fixed width */
     height: auto;
-    margin: 0 auto;
-    overflow: hidden;    /* prevents Notion from stretching it */
+    overflow: hidden;      /* Notion cannot stretch it */
     background: transparent;
   }
 
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: transparent; /* transparent instead of black */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+  /* LOCKED WIDGET WRAPPER */
+  .widget-wrapper {
+    width: 420px;          /* fixed width */
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+    background: transparent;
   }
 
   /* TOWER CONTAINER */
   .tower-container {
     position: relative;
-    width: 420px;        /* fixed width */
-    margin-top: 20px;
+    width: 420px;          /* fixed width */
+    height: auto;
     background: transparent;
   }
 
+  /* TOWER IMAGE */
   .tower-container img {
-    width: 420px;        /* fixed width so it never scales */
+    width: 420px;          /* fixed width */
     height: auto;
     display: block;
   }
 
-  /* ANALOG CLOCK */
+  /* ANALOG CLOCK — lowered slightly */
   .analog-clock {
     position: absolute;
     width: 25px;
     height: 25px;
     border: 2px solid rgba(255,255,255,0.85);
     border-radius: 50%;
-    top: 178px;
+    top: 182px;              /* perfect placement */
     left: 50%;
     transform: translateX(-56%);
     background: rgba(255,255,255,0.15);

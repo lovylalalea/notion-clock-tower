@@ -8,18 +8,17 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: #000;
+    background-color: transparent; /* no black in Notion */
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
   }
 
-  /* TOWER CONTAINER */
   .tower-container {
     position: relative;
     width: 420px;
-    margin-top: 20px;
+    margin-top: 0;
   }
 
   .tower-container img {
@@ -28,16 +27,16 @@
     display: block;
   }
 
-  /* ANALOG CLOCK */
+  /* ANALOG CLOCK — now percentage‑based */
   .analog-clock {
     position: absolute;
     width: 25px;
     height: 25px;
     border: 2px solid rgba(255,255,255,0.85);
     border-radius: 50%;
-    top: 178px;
-    left: 50%;
-    transform: translateX(-56%); /* moved slightly more LEFT */
+    top: 42.4%;              /* converted from 178px */
+    left: 48%;               /* converted from translateX(-56%) */
+    transform: translate(-50%, -50%);
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(4px);
   }
@@ -57,16 +56,16 @@
   #minute-hand { height: 1.5px; width: 50%; }
   #second-hand { height: 1px; width: 55%; background: #ffcccc; }
 
-  /* DIGITAL CLOCK */
+  /* DIGITAL CLOCK — now percentage‑based */
   #digital-clock {
     position: absolute;
-    top: 252px;
-    left: 50%;
-    transform: translateX(-54%);
+    top: 60%;                /* converted from 252px */
+    left: 48%;               /* converted from translateX(-54%) */
+    transform: translate(-50%, -50%);
     font-family: "Times New Roman", serif;
     font-size: 12px;
-    color: #ff8fb3; /* brighter pink */
-    text-shadow: 0 0 8px rgba(255, 143, 179, 0.9); /* stronger glow */
+    color: #ff8fb3;          /* brighter pink */
+    text-shadow: 0 0 8px rgba(255, 143, 179, 0.9);
   }
 </style>
 </head>
@@ -76,14 +75,12 @@
 <div class="tower-container">
   <img src="https://i.imgur.com/o2z6I7K.jpeg" alt="Clock Tower">
 
-  <!-- Analog Clock -->
   <div class="analog-clock">
     <div id="hour-hand" class="hand"></div>
     <div id="minute-hand" class="hand"></div>
     <div id="second-hand" class="hand"></div>
   </div>
 
-  <!-- Digital Clock -->
   <div id="digital-clock"></div>
 </div>
 

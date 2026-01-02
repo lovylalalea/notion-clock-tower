@@ -31,11 +31,11 @@
   /* ANALOG CLOCK (TOP WINDOW) */
   .analog-clock {
     position: absolute;
-    width: 35px;      /* smaller */
+    width: 35px;
     height: 35px;
     border: 3px solid rgba(255,255,255,0.85);
     border-radius: 50%;
-    top: 158px;       /* moved DOWN slightly */
+    top: 165px; /* last correct value */
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255,255,255,0.15);
@@ -60,11 +60,11 @@
   /* DIGITAL CLOCK (BOTTOM WINDOW) */
   #digital-clock {
     position: absolute;
-    top: 245px;       /* moved UP more */
+    top: 245px; /* unchanged on purpose */
     left: 50%;
     transform: translateX(-50%);
     font-family: "Times New Roman", serif;
-    font-size: 22px;  /* smaller */
+    font-size: 18px;  /* SMALLER — only change */
     color: white;
     text-shadow: 0 0 8px rgba(0,0,0,0.6);
   }

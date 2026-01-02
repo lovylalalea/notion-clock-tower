@@ -5,40 +5,49 @@
 <title>Clock Tower</title>
 
 <style>
-  /* LOCKED WIDGET WRAPPER */
+  /* LOCK THE WHOLE WIDGET */
   .widget-wrapper {
-    width: 420px;          /* fixed width */
+    width: 420px;        /* fixed width */
     height: auto;
     margin: 0 auto;
-    overflow: hidden;      /* prevents Notion from stretching it */
+    overflow: hidden;    /* prevents Notion from stretching it */
     background: transparent;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: transparent; /* transparent instead of black */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
   }
 
   /* TOWER CONTAINER */
   .tower-container {
     position: relative;
-    width: 420px;          /* fixed width */
-    height: auto;
+    width: 420px;        /* fixed width */
+    margin-top: 20px;
     background: transparent;
   }
 
-  /* TOWER IMAGE */
   .tower-container img {
-    width: 420px;          /* fixed width */
+    width: 420px;        /* fixed width so it never scales */
     height: auto;
     display: block;
   }
 
-  /* ANALOG CLOCK — stays in bottom circle */
+  /* ANALOG CLOCK */
   .analog-clock {
     position: absolute;
     width: 25px;
     height: 25px;
     border: 2px solid rgba(255,255,255,0.85);
     border-radius: 50%;
-    top: 62%;                 /* locked position */
-    left: 48%;                /* locked position */
-    transform: translate(-50%, -50%);
+    top: 178px;
+    left: 50%;
+    transform: translateX(-56%);
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(4px);
   }
@@ -58,21 +67,21 @@
   #minute-hand { height: 1.5px; width: 50%; }
   #second-hand { height: 1px; width: 55%; background: #ffcccc; }
 
-  /* DIGITAL CLOCK — stays in top circle */
+  /* DIGITAL CLOCK */
   #digital-clock {
     position: absolute;
-    top: 38%;                /* locked position */
-    left: 48%;               /* locked position */
-    transform: translate(-50%, -50%);
+    top: 252px;
+    left: 50%;
+    transform: translateX(-54%);
     font-family: "Times New Roman", serif;
     font-size: 12px;
-    color: #ff8fb3;          /* bright pink */
+    color: #ff8fb3;
     text-shadow: 0 0 8px rgba(255, 143, 179, 0.9);
   }
 </style>
 </head>
 
-<body style="background: transparent; margin: 0; padding: 0;">
+<body>
 
 <div class="widget-wrapper">
   <div class="tower-container">

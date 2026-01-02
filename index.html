@@ -31,11 +31,11 @@
   /* ANALOG CLOCK (TOP WINDOW) */
   .analog-clock {
     position: absolute;
-    width: 60px;      /* smaller */
-    height: 60px;     /* smaller */
-    border: 4px solid rgba(255,255,255,0.85);
+    width: 40px;      /* smaller (your request) */
+    height: 40px;
+    border: 3px solid rgba(255,255,255,0.85);
     border-radius: 50%;
-    top: 170px;       /* moved DOWN */
+    top: 145px;       /* moved UP */
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255,255,255,0.15);
@@ -45,7 +45,7 @@
   .hand {
     position: absolute;
     width: 50%;
-    height: 3px;
+    height: 2px;
     background: white;
     top: 50%;
     left: 50%;
@@ -53,18 +53,18 @@
     border-radius: 2px;
   }
 
-  #hour-hand { height: 4px; width: 35%; }
-  #minute-hand { height: 3px; width: 50%; }
-  #second-hand { height: 2px; width: 55%; background: #ffcccc; }
+  #hour-hand { height: 3px; width: 35%; }
+  #minute-hand { height: 2px; width: 50%; }
+  #second-hand { height: 1.5px; width: 55%; background: #ffcccc; }
 
   /* DIGITAL CLOCK (BOTTOM WINDOW) */
   #digital-clock {
     position: absolute;
-    top: 300px;       /* moved UP */
+    top: 255px;       /* moved UP more */
     left: 50%;
     transform: translateX(-50%);
     font-family: "Times New Roman", serif;
-    font-size: 26px;
+    font-size: 24px;
     color: white;
     text-shadow: 0 0 8px rgba(0,0,0,0.6);
   }

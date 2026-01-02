@@ -8,22 +8,34 @@
   body {
     margin: 0;
     padding: 0;
-    background: url('https://i.imgur.com/o2z6I7K.jpeg') no-repeat center top;
-    background-size: contain;
     background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     min-height: 100vh;
-    height: auto;
+  }
+
+  /* TOWER CONTAINER */
+  .tower-container {
     position: relative;
+    width: 420px; /* controls tower size */
+    margin-top: 20px;
+  }
+
+  .tower-container img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* ANALOG CLOCK (TOP WINDOW) */
   .analog-clock {
-    width: 80px;      /* smaller */
-    height: 80px;     /* smaller */
-    border: 4px solid rgba(255,255,255,0.8);
-    border-radius: 50%;
     position: absolute;
-    top: 19.8%;       /* moved DOWN */
+    width: 78px;      /* smaller */
+    height: 78px;
+    border: 4px solid rgba(255,255,255,0.85);
+    border-radius: 50%;
+    top: 145px;       /* moved DOWN */
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255,255,255,0.15);
@@ -38,7 +50,6 @@
     top: 50%;
     left: 50%;
     transform-origin: 0% 50%;
-    transform: rotate(90deg);
     border-radius: 2px;
   }
 
@@ -48,19 +59,22 @@
 
   /* DIGITAL CLOCK (BOTTOM WINDOW) */
   #digital-clock {
+    position: absolute;
+    top: 345px;       /* moved UP */
+    left: 50%;
+    transform: translateX(-50%);
     font-family: "Times New Roman", serif;
     font-size: 26px;
     color: white;
     text-shadow: 0 0 8px rgba(0,0,0,0.6);
-    position: absolute;
-    top: 42.8%;       /* moved UP */
-    left: 50%;
-    transform: translateX(-50%);
   }
 </style>
 </head>
 
 <body>
+
+<div class="tower-container">
+  <img src="https://i.imgur.com/o2z6I7K.jpeg" alt="Clock Tower">
 
   <!-- Analog Clock -->
   <div class="analog-clock">
@@ -71,6 +85,7 @@
 
   <!-- Digital Clock -->
   <div id="digital-clock"></div>
+</div>
 
 <script>
   /* DIGITAL CLOCK (12-HOUR FORMAT) */

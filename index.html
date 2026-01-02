@@ -3,23 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Clock Tower</title>
+
 <style>
   body {
     margin: 0;
     padding: 0;
-    background: url('YOUR-IMAGE-LINK-HERE') no-repeat center center;
+    background: url('https://imgur.com/a/Qi1ok1d) no-repeat center center;
     background-size: cover;
     height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   #clock {
-    font-family: serif;
-    font-size: 32px;
-    color: white;
-    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+    font-family: "Times New Roman", serif;
+    font-size: 38px;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(0,0,0,0.6);
+    position: relative;
+    top: -40px; /* moves the clock upward into the circular space */
   }
 </style>
 </head>
@@ -32,9 +36,12 @@
       const now = new Date();
       let hours = now.getHours();
       let minutes = now.getMinutes();
+
       minutes = minutes < 10 ? "0" + minutes : minutes;
+
       document.getElementById("clock").innerHTML = hours + ":" + minutes;
     }
+
     setInterval(updateClock, 1000);
     updateClock();
   </script>

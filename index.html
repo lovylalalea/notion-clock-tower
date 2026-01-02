@@ -18,7 +18,7 @@
   /* TOWER CONTAINER */
   .tower-container {
     position: relative;
-    width: 420px; /* controls tower size */
+    width: 420px;
     margin-top: 20px;
   }
 
@@ -28,16 +28,16 @@
     display: block;
   }
 
-  /* ANALOG CLOCK (TOP WINDOW) */
+  /* ANALOG CLOCK */
   .analog-clock {
     position: absolute;
     width: 24px;
     height: 24px;
     border: 2px solid rgba(255,255,255,0.85);
     border-radius: 50%;
-    top: 175px;
+    top: 178px;                 /* moved DOWN */
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-52%); /* moved LEFT */
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(4px);
   }
@@ -57,16 +57,16 @@
   #minute-hand { height: 1.5px; width: 50%; }
   #second-hand { height: 1px; width: 55%; background: #ffcccc; }
 
-  /* DIGITAL CLOCK (BOTTOM WINDOW) */
+  /* DIGITAL CLOCK */
   #digital-clock {
     position: absolute;
-    top: 245px; /* unchanged */
+    top: 248px;                 /* moved DOWN */
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-52%); /* moved LEFT */
     font-family: "Times New Roman", serif;
-    font-size: 12px;  /* NEW SIZE */
-    color: white;
-    text-shadow: 0 0 8px rgba(0,0,0,0.6);
+    font-size: 12px;            /* smaller */
+    color: #ffb6c9;             /* soft pink */
+    text-shadow: 0 0 6px rgba(255, 182, 201, 0.7);
   }
 </style>
 </head>
@@ -88,7 +88,6 @@
 </div>
 
 <script>
-  /* DIGITAL CLOCK (12-HOUR FORMAT) */
   function updateDigitalClock() {
     const now = new Date();
     let hours = now.getHours();
@@ -103,7 +102,6 @@
       hours + ":" + minutes + " " + ampm;
   }
 
-  /* ANALOG CLOCK */
   function updateAnalogClock() {
     const now = new Date();
     const seconds = now.getSeconds();

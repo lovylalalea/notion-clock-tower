@@ -8,42 +8,37 @@
   body {
     margin: 0;
     padding: 0;
-    background: url('https://imgur.com/a/Qi1ok1d) no-repeat center center;
+    background: url('https://i.imgur.com/o2z6I7K.jpeg') no-repeat center center;
     background-size: cover;
     height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
-  #clock {
-    font-family: "Times New Roman", serif;
-    font-size: 38px;
-    color: #ffffff;
-    text-shadow: 0 0 8px rgba(0,0,0,0.6);
-    position: relative;
-    top: -40px; /* moves the clock upward into the circular space */
+  /* ANALOG CLOCK (TOP WINDOW) */
+  .analog-clock {
+    width: 140px;
+    height: 140px;
+    border: 6px solid rgba(255,255,255,0.8);
+    border-radius: 50%;
+    position: absolute;
+    top: 140px; /* adjust to fit your tower window */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
   }
-</style>
-</head>
 
-<body>
-  <div id="clock"></div>
+  .hand {
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 50%;
+    transform: rotate(90deg);
+    border-radius: 2px;
+  }
 
-  <script>
-    function updateClock() {
-      const now = new Date();
-      let hours = now.getHours();
-      let minutes = now.getMinutes();
-
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-
-      document.getElementById("clock").innerHTML = hours + ":" + minutes;
-    }
-
-    setInterval(updateClock, 1000);
-    updateClock();
-  </script>
-</body>
-</html>
+  #hour-hand { height: 4px; width: 35%; }
+  #minute-hand { height: 3px; width: 50%; }
+  #second-hand { height: 2px; width: 55%; background: #ff

@@ -5,37 +5,39 @@
 <title>Clock Tower</title>
 
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: transparent; /* no black in Notion */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+  /* LOCKED WIDGET WRAPPER */
+  .widget-wrapper {
+    width: 420px;          /* fixed width */
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;      /* prevents Notion from stretching it */
+    background: transparent;
   }
 
+  /* TOWER CONTAINER */
   .tower-container {
     position: relative;
-    width: 420px;
-    margin-top: 0;
+    width: 420px;          /* fixed width */
+    height: auto;
+    background: transparent;
   }
 
+  /* TOWER IMAGE */
   .tower-container img {
-    width: 100%;
+    width: 420px;          /* fixed width */
     height: auto;
     display: block;
   }
 
-  /* ANALOG CLOCK — now percentage‑based */
+  /* ANALOG CLOCK — stays in bottom circle */
   .analog-clock {
     position: absolute;
     width: 25px;
     height: 25px;
     border: 2px solid rgba(255,255,255,0.85);
     border-radius: 50%;
-    top: 42.4%;              /* converted from 178px */
-    left: 48%;               /* converted from translateX(-56%) */
+    top: 62%;                 /* locked position */
+    left: 48%;                /* locked position */
     transform: translate(-50%, -50%);
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(4px);
@@ -56,32 +58,36 @@
   #minute-hand { height: 1.5px; width: 50%; }
   #second-hand { height: 1px; width: 55%; background: #ffcccc; }
 
-  /* DIGITAL CLOCK — now percentage‑based */
+  /* DIGITAL CLOCK — stays in top circle */
   #digital-clock {
     position: absolute;
-    top: 60%;                /* converted from 252px */
-    left: 48%;               /* converted from translateX(-54%) */
+    top: 38%;                /* locked position */
+    left: 48%;               /* locked position */
     transform: translate(-50%, -50%);
     font-family: "Times New Roman", serif;
     font-size: 12px;
-    color: #ff8fb3;          /* brighter pink */
+    color: #ff8fb3;          /* bright pink */
     text-shadow: 0 0 8px rgba(255, 143, 179, 0.9);
   }
 </style>
 </head>
 
-<body>
+<body style="background: transparent; margin: 0; padding: 0;">
 
-<div class="tower-container">
-  <img src="https://i.imgur.com/o2z6I7K.jpeg" alt="Clock Tower">
+<div class="widget-wrapper">
+  <div class="tower-container">
+    <img src="https://i.imgur.com/o2z6I7K.jpeg" alt="Clock Tower">
 
-  <div class="analog-clock">
-    <div id="hour-hand" class="hand"></div>
-    <div id="minute-hand" class="hand"></div>
-    <div id="second-hand" class="hand"></div>
+    <!-- Analog Clock -->
+    <div class="analog-clock">
+      <div id="hour-hand" class="hand"></div>
+      <div id="minute-hand" class="hand"></div>
+      <div id="second-hand" class="hand"></div>
+    </div>
+
+    <!-- Digital Clock -->
+    <div id="digital-clock"></div>
   </div>
-
-  <div id="digital-clock"></div>
 </div>
 
 <script>

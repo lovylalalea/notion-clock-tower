@@ -5,7 +5,6 @@
 <title>Clock Tower</title>
 
 <style>
-  /* HARD LOCK: Prevent Notion from scaling the widget */
   html, body {
     margin: 0;
     padding: 0;
@@ -56,7 +55,7 @@
     background: white;
     top: 50%;
     left: 50%;
-    transform-origin: 100% 50%; /* FIXED */
+    transform-origin: 0% 50%; /* back to your original */
     border-radius: 2px;
   }
 
@@ -94,6 +93,10 @@
 </div>
 
 <script>
+  /* tweak these if the analog time is off */
+  const HOURS_OFFSET = 0;   // set to +1, -1, etc. if needed
+  const MINUTES_OFFSET = 0; // set to +5, -5, etc. if needed
+
   function updateDigitalClock() {
     const now = new Date();
     let hours = now.getHours();
@@ -110,21 +113,26 @@
 
   function updateAnalogClock() {
     const now = new Date();
-    const seconds = now.getSeconds();
-    const minutes = now.getMinutes();
-    const hours = now.getHours();
+    let seconds = now.getSeconds();
+    let minutes = now.getMinutes() + MINUTES_OFFSET;
+    let hours = now.getHours() + HOURS_OFFSET;
 
-    /* FIX: subtract 90 degrees so 0deg = 12 o'clock */
-    const secondDeg = seconds * 6 - 90;
-    const minuteDeg = minutes * 6 + seconds * 0.1 - 90;
-    const hourDeg = (hours % 12) * 30 + minutes * 0.5 - 90;
+    // normalize minutes and hours if offsets push them out of range
+    if (minutes < 0) minutes += 60;
+    if (minutes >= 60) minutes -= 60;
+    if (hours < 0) hours += 24;
+    if (hours >= 24) hours -= 24;
+
+    const secondDeg = seconds * 6;
+    const minuteDeg = minutes * 6 + seconds * 0.1;
+    const hourDeg = (hours % 12) * 30 + minutes * 0.5;
 
     document.getElementById("second-hand").style.transform =
-      `rotate(${secondDeg}deg)`;
+      "rotate(" + secondDeg + "deg)";
     document.getElementById("minute-hand").style.transform =
-      `rotate(${minuteDeg}deg)`;
+      "rotate(" + minuteDeg + "deg)";
     document.getElementById("hour-hand").style.transform =
-      `rotate(${hourDeg}deg)`;
+      "rotate(" + hourDeg + "deg)";
   }
 
   setInterval(() => {

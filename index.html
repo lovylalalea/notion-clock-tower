@@ -93,7 +93,7 @@
 </div>
 
 <script>
-  /* DIGITAL CLOCK — now forced to EST */
+  /* DIGITAL CLOCK — EST */
   function updateDigitalClock() {
     const now = new Date(
       new Date().toLocaleString("en-US", { timeZone: "America/New_York" })
@@ -111,7 +111,7 @@
       hours + ":" + minutes + " " + ampm;
   }
 
-  /* ANALOG CLOCK — EST + rotation fix */
+  /* ANALOG CLOCK — EST + rotation offset */
   function updateAnalogClock() {
     const now = new Date(
       new Date().toLocaleString("en-US", { timeZone: "America/New_York" })
@@ -121,7 +121,7 @@
     const minutes = now.getMinutes();
     const hours = now.getHours();
 
-    const OFFSET = -110;  /* your best rotation */
+    const OFFSET = -104;  /* your chosen rotation */
 
     const secondDeg = seconds * 6 + OFFSET;
     const minuteDeg = minutes * 6 + seconds * 0.1 + OFFSET;

@@ -9,46 +9,42 @@
   html, body {
     margin: 0;
     padding: 0;
-    width: 420px;          /* fixed width */
+    width: 420px;
     height: auto;
-    overflow: hidden;      /* Notion cannot stretch it */
+    overflow: hidden;
     background: transparent;
   }
 
-  /* LOCKED WIDGET WRAPPER */
   .widget-wrapper {
-    width: 420px;          /* fixed width */
+    width: 420px;
     height: auto;
     margin: 0 auto;
     overflow: hidden;
     background: transparent;
   }
 
-  /* TOWER CONTAINER */
   .tower-container {
     position: relative;
-    width: 420px;          /* fixed width */
+    width: 420px;
     height: auto;
     background: transparent;
   }
 
-  /* TOWER IMAGE */
   .tower-container img {
-    width: 420px;          /* fixed width */
+    width: 420px;
     height: auto;
     display: block;
   }
 
-  /* ANALOG CLOCK — moved slightly UP + LEFT */
   .analog-clock {
     position: absolute;
     width: 25px;
     height: 25px;
     border: 2px solid rgba(255,255,255,0.85);
     border-radius: 50%;
-    top: 178px;                 /* moved UP slightly */
+    top: 178px;
     left: 50%;
-    transform: translateX(-58%); /* moved LEFT previously */
+    transform: translateX(-58%);
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(4px);
   }
@@ -68,7 +64,6 @@
   #minute-hand { height: 1.5px; width: 50%; }
   #second-hand { height: 1px; width: 55%; background: #ffcccc; }
 
-  /* DIGITAL CLOCK */
   #digital-clock {
     position: absolute;
     top: 252px;
@@ -88,14 +83,12 @@
   <div class="tower-container">
     <img src="https://i.imgur.com/o2z6I7K.jpeg" alt="Clock Tower">
 
-    <!-- Analog Clock -->
     <div class="analog-clock">
       <div id="hour-hand" class="hand"></div>
       <div id="minute-hand" class="hand"></div>
       <div id="second-hand" class="hand"></div>
     </div>
 
-    <!-- Digital Clock -->
     <div id="digital-clock"></div>
   </div>
 </div>
@@ -126,11 +119,11 @@
     const hourDeg = (hours % 12) * 30 + minutes * 0.5;
 
     document.getElementById("second-hand").style.transform =
-      "rotate(" + secondDeg + "deg)";
+      `rotate(${secondDeg}deg)`;
     document.getElementById("minute-hand").style.transform =
-      "rotate(" + minuteDeg + "deg)";
+      `rotate(${minuteDeg}deg)`;
     document.getElementById("hour-hand").style.transform =
-      "rotate(" + hourDeg + "deg)";
+      `rotate(${hourDeg}deg)`;
   }
 
   setInterval(() => {

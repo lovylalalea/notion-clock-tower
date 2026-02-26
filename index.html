@@ -55,7 +55,7 @@
     background: white;
     top: 50%;
     left: 50%;
-    transform-origin: 0% 50%; /* back to your original */
+    transform-origin: 0% 50%; /* your original */
     border-radius: 2px;
   }
 
@@ -93,10 +93,6 @@
 </div>
 
 <script>
-  /* tweak these if the analog time is off */
-  const HOURS_OFFSET = 0;   // set to +1, -1, etc. if needed
-  const MINUTES_OFFSET = 0; // set to +5, -5, etc. if needed
-
   function updateDigitalClock() {
     const now = new Date();
     let hours = now.getHours();
@@ -113,26 +109,23 @@
 
   function updateAnalogClock() {
     const now = new Date();
-    let seconds = now.getSeconds();
-    let minutes = now.getMinutes() + MINUTES_OFFSET;
-    let hours = now.getHours() + HOURS_OFFSET;
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
 
-    // normalize minutes and hours if offsets push them out of range
-    if (minutes < 0) minutes += 60;
-    if (minutes >= 60) minutes -= 60;
-    if (hours < 0) hours += 24;
-    if (hours >= 24) hours -= 24;
+    /* CLOCK FACE ROTATION FIX: subtract 110 degrees */
+    const OFFSET = -110;
 
-    const secondDeg = seconds * 6;
-    const minuteDeg = minutes * 6 + seconds * 0.1;
-    const hourDeg = (hours % 12) * 30 + minutes * 0.5;
+    const secondDeg = seconds * 6 + OFFSET;
+    const minuteDeg = minutes * 6 + seconds * 0.1 + OFFSET;
+    const hourDeg = (hours % 12) * 30 + minutes * 0.5 + OFFSET;
 
     document.getElementById("second-hand").style.transform =
-      "rotate(" + secondDeg + "deg)";
+      `rotate(${secondDeg}deg)`;
     document.getElementById("minute-hand").style.transform =
-      "rotate(" + minuteDeg + "deg)";
+      `rotate(${minuteDeg}deg)`;
     document.getElementById("hour-hand").style.transform =
-      "rotate(" + hourDeg + "deg)";
+      `rotate(${hourDeg}deg)`;
   }
 
   setInterval(() => {

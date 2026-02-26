@@ -5,6 +5,7 @@
 <title>Clock Tower</title>
 
 <style>
+  /* HARD LOCK: Prevent Notion from scaling the widget */
   html, body {
     margin: 0;
     padding: 0;
@@ -35,6 +36,7 @@
     display: block;
   }
 
+  /* ANALOG CLOCK */
   .analog-clock {
     position: absolute;
     width: 25px;
@@ -63,6 +65,7 @@
   #minute-hand { height: 1.5px; width: 50%; }
   #second-hand { height: 1px; width: 55%; background: #ffcccc; }
 
+  /* DIGITAL CLOCK */
   #digital-clock {
     position: absolute;
     top: 252px;
@@ -82,19 +85,25 @@
   <div class="tower-container">
     <img src="https://i.imgur.com/o2z6I7K.jpeg" alt="Clock Tower">
 
+    <!-- Analog Clock -->
     <div class="analog-clock">
       <div id="hour-hand" class="hand"></div>
       <div id="minute-hand" class="hand"></div>
       <div id="second-hand" class="hand"></div>
     </div>
 
+    <!-- Digital Clock -->
     <div id="digital-clock"></div>
   </div>
 </div>
 
 <script>
+  /* DIGITAL CLOCK (already correct) */
   function updateDigitalClock() {
-    const now = new Date();
+    const now = new Date(
+      new Date().toLocaleString("en-US", { timeZone: "America/New_York" })
+    );
+
     let hours = now.getHours();
     let minutes = now.getMinutes();
     let ampm = hours >= 12 ? "PM" : "AM";
@@ -107,18 +116,19 @@
       hours + ":" + minutes + " " + ampm;
   }
 
+  /* ANALOG CLOCK — now forced to EST */
   function updateAnalogClock() {
-    const now = new Date();
+    const now = new Date(
+      new Date().toLocaleString("en-US", { timeZone: "America/New_York" })
+    );
+
     const seconds = now.getSeconds();
     const minutes = now.getMinutes();
     const hours = now.getHours();
 
-    /* CLOCK FACE ROTATION FIX: subtract 110 degrees */
-    const OFFSET = -110;
-
-    const secondDeg = seconds * 6 + OFFSET;
-    const minuteDeg = minutes * 6 + seconds * 0.1 + OFFSET;
-    const hourDeg = (hours % 12) * 30 + minutes * 0.5 + OFFSET;
+    const secondDeg = seconds * 6;
+    const minuteDeg = minutes * 6 + seconds * 0.1;
+    const hourDeg = (hours % 12) * 30 + minutes * 0.5;
 
     document.getElementById("second-hand").style.transform =
       `rotate(${secondDeg}deg)`;
